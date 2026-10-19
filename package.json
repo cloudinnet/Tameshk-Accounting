@@ -1,0 +1,61 @@
+{
+  "name": "tameshk-accounting",
+  "version": "1.50.7",
+  "description": "Offline Windows desktop accounting software for Tameshk",
+  "main": "desktop/main.cjs",
+  "author": "TAMESHK - Internet Café (A.Narimani)",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win dir --x64 && node scripts/build-installer.cjs"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3"
+  },
+  "overrides": {
+    "@electron/get": "5.1.0",
+    "extract-zip": "2.0.1",
+    "http-cache-semantics": "4.2.0"
+  },
+  "build": {
+    "appId": "ir.tameshk.cafeaccounting",
+    "productName": "حسابداری تمشک",
+    "executableName": "حسابداری تمشک",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "desktop/**/*",
+      "package.json",
+      "LICENSE",
+      "!desktop/**/*.test.js",
+      "!desktop/**/*.test.cjs"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/app",
+        "to": "app",
+        "filter": [
+          "**/*",
+          "!**/*.test.js",
+          "!**/*.test.cjs",
+          "!**/*.md"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "resources/app/icon.ico",
+      "signExecutable": false
+    }
+  }
+}

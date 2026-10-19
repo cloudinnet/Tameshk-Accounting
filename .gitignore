@@ -1,0 +1,15 @@
+# Dependencies and generated artifacts
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+__pycache__/
+*.py[cod]
+*.log
+.env
+.env.*
+!.env.example
+
+# Generated NSIS payload include (created during build)
+installer/payload.generated.nsh
